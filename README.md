@@ -1,0 +1,4 @@
+AliasMany
+=========
+
+** TODO: Add description **
