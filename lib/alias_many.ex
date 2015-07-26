@@ -7,7 +7,7 @@ defmodule AliasMany do
    ...
   alias_many [ModuleONe, ModuleTow, ...], from: NameSpace
   """
-  defmacro alias_many(submodule_aliases, from: namespace_alias) when is_list(submodule_aliases) do
+  defmacro alias(submodule_aliases, from: namespace_alias) when is_list(submodule_aliases) do
     namespace_atom = atom_from_alias(namespace_alias)
     submodule_aliases |>
       Enum.map(fn(sub) -> add_namespace_to_alias(sub, namespace_atom) end) |>
@@ -17,10 +17,6 @@ defmodule AliasMany do
         end
       end)
   end
-
-  defmacro alias_many(_, _) do
-    
-
 
   defp atom_from_alias(alias) do
     {_, _, [name]} = alias
