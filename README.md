@@ -11,5 +11,5 @@ alias NameSpace.SubmoduleThree
 ... and so on. You can
 ```
 require AliasMany
-AliasMany.alias_many [SubmoduleOne, SubModuleTwo, SubmoduleThree], from: NameSpace
+AliasMany.alias [SubmoduleOne, SubModuleTwo, SubmoduleThree], from: NameSpace
 ```
