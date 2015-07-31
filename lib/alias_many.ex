@@ -11,11 +11,20 @@ defmodule AliasMany do
     namespace_atom = atom_from_alias(namespace_alias)
     submodule_aliases |>
       Enum.map(fn(sub) -> add_namespace_to_alias(sub, namespace_atom) end) |>
-      Enum.map(fn(sub) ->
-        quote do
-          alias unquote(sub)
-        end
-      end)
+      quoted_aliases
+  end
+
+  defmacro alias(submodule_aliases) when is_list(submodule_aliases) do
+    quoted_aliases(submodule_aliases)
+  end
+
+  defp quoted_aliases(modules) do
+    modules |>
+    Enum.map(fn(mod) ->
+      quote do
+        alias unquote(mod)
+      end
+    end)
   end
 
   defp atom_from_alias(alias) do
